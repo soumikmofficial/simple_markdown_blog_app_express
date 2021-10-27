@@ -75,3 +75,44 @@ a {
 .single-article-container .delete-btn {
   background: red;
 }
+.form-group {
+  margin: 1.5rem 0;
+}
+.form-group label {
+  display: block;
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  font-weight: bold;
+}
+
+.form-group input,
+textarea {
+  width: 100%;
+  padding: 1rem;
+}
+.form-group input {
+  height: 3rem;
+}
+
+.form-group textarea {
+  height: 15rem;
+}
+
+.form-container a,
+button {
+  all: unset;
+  color: black;
+  border: none;
+  font-size: 1.5rem;
+  padding: 1rem;
+  cursor: pointer;
+}
+
+.form-container a {
+  background: pink;
+  margin-right: 1rem;
+}
+
+.form-container button {
+  background: yellowgreen;
+}
