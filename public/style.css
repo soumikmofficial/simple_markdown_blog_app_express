@@ -9,7 +9,7 @@
 :root {
   --header-font: "Zen Old Mincho", serif;
   --body-font: "Open Sans", sans-serif;
-  --primary-color: red;
+  --primary-color: rgb(172, 201, 42);
   --grey-color: hsl(0, 1%, 38%);
 }
 
@@ -19,6 +19,20 @@ html {
 
 body {
   padding: 0 2rem;
+}
+
+a {
+  text-decoration: none;
+}
+
+.new-article-btn {
+  display: inline-block;
+  color: black;
+  font-size: 2rem;
+  padding: 1rem;
+  margin: 2rem auto;
+  background: var(--primary-color);
+  color: rgb(129, 80, 65);
 }
 
 .single-article-container {
@@ -42,4 +56,22 @@ body {
 .single-article-container .desc {
   font-family: var(--body-font);
   font-size: 1.5rem;
+}
+
+.single-article-container .btn {
+  margin-top: 2rem;
+  padding: 1rem;
+  display: inline-block;
+  font-size: 1.3rem;
+  color: white;
+}
+
+.single-article-container .read-more-btn {
+  background: blue;
+}
+.single-article-container .edit-btn {
+  background: green;
+}
+.single-article-container .delete-btn {
+  background: red;
 }

@@ -4,11 +4,16 @@
 
   <body>
     <h1>This is the article page</h1>
+    <a href="articles/new" class="new-article-btn">New Article</a>
     <div class="single-article-container">
       <% articles.forEach((article) => { %>
       <h3 class="title"><%= article.title %></h3>
       <small class="date"><%= article.date%></small>
       <p class="desc"><%= article.description%></p>
+
+      <a href="" class="btn read-more-btn">Read More</a>
+      <a href="" class="btn edit-btn">Update</a>
+      <a href="" class="btn delete-btn">Delete</a>
 
       <% }) %>
     </div>
