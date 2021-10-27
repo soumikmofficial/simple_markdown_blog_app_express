@@ -2,17 +2,12 @@ require("dotenv").config();
 
 const express = require("express");
 const app = express();
-// const ejs = require("ejs");
 
-// app.set("view engine", ejs);
+app.set("view engine", "ejs");
 app.use(express.json());
 
-// app.get("/", (req, res) => {
-//   res.render("home");
-// });
-
 app.get("/", (req, res) => {
-  res.send("working");
+  res.render("home", { title: "Home Page" });
 });
 
 const port = process.env.PORT || 3000;
