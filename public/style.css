@@ -1,0 +1,45 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,700;0,800;1,300;1,500;1,600;1,700&family=Zen+Old+Mincho:wght@400;700;900&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --header-font: "Zen Old Mincho", serif;
+  --body-font: "Open Sans", sans-serif;
+  --primary-color: red;
+  --grey-color: hsl(0, 1%, 38%);
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  padding: 0 2rem;
+}
+
+.single-article-container {
+  padding: 2rem 1rem;
+  border: 0.1rem solid black;
+}
+
+.single-article-container .title {
+  font-family: var(--header-font);
+  font-weight: bold;
+  font-size: 2.5rem;
+}
+
+.single-article-container .date {
+  display: block;
+  font-size: 1.3rem;
+  margin: 1rem 0 1.5rem;
+  color: var(--grey-color);
+}
+
+.single-article-container .desc {
+  font-family: var(--body-font);
+  font-size: 1.5rem;
+}
