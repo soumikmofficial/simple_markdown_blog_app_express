@@ -2,6 +2,7 @@ require("dotenv").config();
 
 const express = require("express");
 const app = express();
+
 const articleRouter = require("./routes/articles");
 
 app.set("view engine", "ejs");
