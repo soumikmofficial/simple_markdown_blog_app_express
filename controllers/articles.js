@@ -1,13 +1,5 @@
 const Article = require("../models/article");
 
-const data = [
-  {
-    title: "First Article",
-    date: new Date().toLocaleDateString(),
-    description: "This is the very first article written for trial mode",
-  },
-];
-
 const getAllArticles = async (req, res) => {
   try {
     const articles = await Article.find({});
@@ -20,18 +12,25 @@ const getAllArticles = async (req, res) => {
   }
 };
 
+// *single article
+
 const getSingleArticle = async (req, res) => {
   const { id } = req.params;
   try {
     const article = await Article.findOne({ _id: id });
+    if (!article) {
+      return res.render("404");
+    }
     res.render("singleArticle", { article });
   } catch (error) {
-    console.log(error);
+    res.status(500).json({ status: "unsuccessul", message: error });
   }
 };
 
 const newArticle = async (req, res) => {
-  res.status(200).render("new", { title: "Create Article" });
+  res
+    .status(200)
+    .render("new", { title: "Create Article", article: new Article() });
 };
 
 const createArticle = async (req, res) => {

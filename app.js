@@ -11,19 +11,17 @@ app.use(express.json());
 app.use(express.static("public"));
 app.use(express.urlencoded({ extended: false }));
 
-const data = [
-  {
-    title: "First Article",
-    date: new Date().toLocaleString(),
-    description: "This is the very first article written for trial mode",
-  },
-];
-
 app.get("/", (req, res) => {
-  res.render("home", { title: "Home Page", articles: data });
+  res.render("home", { title: "Home Page" });
 });
 
 app.use("/articles", articleRouter);
+
+const notFound = require("./middleware/not-found");
+const errorHandler = require("./middleware/error-handler");
+
+app.use(notFound);
+app.use(errorHandler);
 
 const port = process.env.PORT || 3000;
 
