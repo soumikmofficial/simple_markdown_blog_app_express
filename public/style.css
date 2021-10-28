@@ -7,13 +7,21 @@
 }
 
 :root {
+  /* font */
   --header-font: "Zen Old Mincho", serif;
   --body-font: "Open Sans", sans-serif;
+
+  /* color */
   --primary-color: hsl(71, 65%, 48%);
   --grey-color: hsl(0, 1%, 38%);
   --light-grey-color: #faf2f2;
   --blue-color: hsl(212, 43%, 46%);
+  --green-color: hsl(140, 59%, 50%);
+  --red-color: hsl(0, 53%, 55%);
+
+  /* others */
   --tiny-radius: 0.5em;
+  --border-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
 html {
@@ -29,8 +37,10 @@ a {
 }
 
 .new-article-btn {
-  display: inline-block;
+  display: block;
   color: black;
+  text-align: center;
+  max-width: 20rem;
   font-size: 2rem;
   padding: 1rem;
   margin: 2rem auto;
@@ -38,10 +48,14 @@ a {
   color: rgb(129, 80, 65);
 }
 
+.container {
+  width: 50%;
+  margin: 0 auto;
+}
 .article-container {
-  padding: 2rem 1rem;
-  border: 0.1rem solid black;
-  margin: 0.5rem 0;
+  padding: 2rem;
+  box-shadow: var(--border-shadow);
+  margin: 2rem 0;
 }
 
 .article-container .title {
@@ -70,16 +84,17 @@ a {
   color: white;
   font-family: var(--body-font);
   margin-right: 1rem;
+  border-radius: var(--tiny-radius);
 }
 
 .article-container .read-more-btn {
   background: var(--blue-color);
 }
 .article-container .edit-btn {
-  background: green;
+  background: var(--green-color);
 }
 .article-container .delete-btn {
-  background: red;
+  background: var(--red-color);
 }
 .form-group {
   margin: 1.5rem 0;
@@ -162,7 +177,7 @@ button {
   background: var(--light-grey-color);
   margin: 5rem auto;
   padding: 3rem 2rem;
-  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  box-shadow: var(--border-shadow);
 }
 
 .single-article-container h1 {

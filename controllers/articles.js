@@ -2,7 +2,7 @@ const Article = require("../models/article");
 
 const getAllArticles = async (req, res) => {
   try {
-    const articles = await Article.find({});
+    const articles = await Article.find({}).sort({ createdAt: "desc" });
     if (!articles) {
       res.status(200).send("There is no article to be shown");
     }
