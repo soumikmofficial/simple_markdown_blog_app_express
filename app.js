@@ -4,6 +4,7 @@ const express = require("express");
 const app = express();
 
 const articleRouter = require("./routes/articles");
+const connectDB = require("./db/connect");
 
 app.set("view engine", "ejs");
 app.use(express.json());
@@ -25,4 +26,13 @@ app.use("/articles", articleRouter);
 
 const port = process.env.PORT || 3000;
 
-app.listen(port, () => console.log(`server is running on port ${port}`));
+const start = async () => {
+  try {
+    await connectDB(process.env.MONGO_URI);
+    app.listen(port, () => console.log(`server is running on port ${port}`));
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+start();
