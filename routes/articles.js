@@ -1,9 +1,15 @@
 const express = require("express");
 const router = express.Router();
 
-const { getAllArticles, newArticle } = require("../controllers/articles");
+const {
+  getAllArticles,
+  newArticle,
+  createArticle,
+  getSingleArticle,
+} = require("../controllers/articles");
 
-router.get("/", getAllArticles);
-router.get("/new", newArticle);
+router.route("/").get(getAllArticles).post(createArticle);
+router.route("/new").get(newArticle);
+router.route("/:id").get(getSingleArticle);
 
 module.exports = router;

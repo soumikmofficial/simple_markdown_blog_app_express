@@ -9,6 +9,7 @@ const connectDB = require("./db/connect");
 app.set("view engine", "ejs");
 app.use(express.json());
 app.use(express.static("public"));
+app.use(express.urlencoded({ extended: false }));
 
 const data = [
   {
