@@ -11,7 +11,7 @@
         <small class="date"><%= article.createdAt.toLocaleDateString()%></small>
         <p class="desc"><%= article.markdown %></p>
 
-        <a href="/articles/<%= article._id %>" class="btn read-more-btn"
+        <a href="/articles/<%= article.slug %>" class="btn read-more-btn"
           >Read More</a
         >
         <a href="" class="btn edit-btn">Update</a>

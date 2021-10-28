@@ -1,5 +1,6 @@
 const Article = require("../models/article");
 
+// *get all articles
 const getAllArticles = async (req, res) => {
   try {
     const articles = await Article.find({}).sort({ createdAt: "desc" });
@@ -13,11 +14,10 @@ const getAllArticles = async (req, res) => {
 };
 
 // *single article
-
 const getSingleArticle = async (req, res) => {
-  const { id } = req.params;
+  const { slug } = req.params;
   try {
-    const article = await Article.findOne({ _id: id });
+    const article = await Article.findOne({ slug });
     if (!article) {
       return res.render("404");
     }
