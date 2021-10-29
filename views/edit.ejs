@@ -3,7 +3,7 @@
   <%- include('./partials/header') %>
   <body>
     <div class="form-container">
-      <form action="/articles/<%= article.id%>?_method=PUT" method="POST">
+      <form action="/articles/<%= article.id%>?_method=PATCH" method="POST">
         <div class="form-group">
           <label for="title">Title</label>
           <input

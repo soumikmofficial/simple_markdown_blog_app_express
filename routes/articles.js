@@ -21,7 +21,7 @@ router.route("/:slug").get(getSingleArticle);
 router.route("/edit/:slug").get(editArticlePage);
 router
   .route("/:id")
-  .put(updateArticle, saveAndRedirect("edit"))
+  .patch(updateArticle, saveAndRedirect("edit"))
   .delete(deleteArticle);
 
 module.exports = router;

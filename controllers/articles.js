@@ -3,29 +3,18 @@ const Article = require("../models/article");
 
 // *get all articles
 const getAllArticles = async (req, res) => {
-  try {
-    const articles = await Article.find({}).sort({ createdAt: "desc" });
-    if (!articles) {
-      res.status(200).send("There is no article to be shown");
-    }
-    res.status(200).render("articles", { articles });
-  } catch (error) {
-    console.log(error);
-  }
+  const articles = await Article.find({}).sort({ createdAt: "desc" });
+  res.status(200).render("articles", { articles });
 };
 
 // *single article
-const getSingleArticle = async (req, res) => {
+const getSingleArticle = async (req, res, next) => {
   const { slug } = req.params;
-  try {
-    const article = await Article.findOne({ slug });
-    if (!article) {
-      return res.render("404");
-    }
-    res.render("singleArticle", { article });
-  } catch (error) {
-    res.status(500).json({ status: "unsuccessul", message: error });
+  const article = await Article.findOne({ slug });
+  if (!article) {
+    return res.render("404");
   }
+  res.render("singleArticle", { article });
 };
 
 // ** new article page
@@ -45,26 +34,18 @@ const createArticle = async (req, res, next) => {
 
 const editArticlePage = async (req, res) => {
   const { slug } = req.params;
-  try {
-    const article = await Article.findOne({ slug: slug });
-    res.render("edit", { article });
-  } catch (error) {
-    console.log(error);
-  }
+  const article = await Article.findOne({ slug: slug });
+  res.render("edit", { article });
 };
 
 // *delete article
 const deleteArticle = async (req, res) => {
   const { id } = req.params;
-  try {
-    const article = await Article.findOneAndDelete({ _id: id });
-    if (!article) {
-      return res.render("404");
-    }
-    res.redirect("/articles");
-  } catch (error) {
-    console.log(error);
+  const article = await Article.findOneAndDelete({ _id: id });
+  if (!article) {
+    return res.render("404");
   }
+  res.redirect("/articles");
 };
 
 // **update article
