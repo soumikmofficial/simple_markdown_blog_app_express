@@ -76,7 +76,8 @@ a {
   font-size: 1.5rem;
 }
 
-.article-container .btn {
+.article-container .btn,
+.edit-btn {
   margin-top: 2rem;
   padding: 1rem;
   display: inline-block;
@@ -90,7 +91,7 @@ a {
 .article-container .read-more-btn {
   background: var(--blue-color);
 }
-.article-container .edit-btn {
+.edit-btn {
   background: var(--green-color);
 }
 .article-container .delete-btn {

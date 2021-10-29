@@ -7,6 +7,7 @@
       <small><%= article.createdAt.toLocaleDateString() %></small>
       <div><%- article.sanitizedHtml %></div>
       <a href="/articles" class="back-btn">Back to Articles</a>
+      <a href="/articles/edit/<%= article.slug %>" class="edit-btn">Edit</a>
     </div>
   </body>
 </html>
