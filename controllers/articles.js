@@ -28,6 +28,7 @@ const getSingleArticle = async (req, res) => {
   }
 };
 
+// ** new article page
 const newArticle = async (req, res) => {
   res
     .status(200)
@@ -35,19 +36,20 @@ const newArticle = async (req, res) => {
 };
 
 // **create article
-const createArticle = async (req, res) => {
-  const { title, description, markdown } = req.body;
-  let article = new Article({
-    title,
-    description,
-    markdown,
-  });
+const createArticle = async (req, res, next) => {
+  req.article = new Article();
+  next();
+};
+
+// *edit article page
+
+const editArticlePage = async (req, res) => {
+  const { slug } = req.params;
   try {
-    article = await article.save();
-    res.redirect(`/articles/${article.slug}`);
+    const article = await Article.findOne({ slug: slug });
+    res.render("edit", { article });
   } catch (error) {
     console.log(error);
-    res.render("new", { article: article });
   }
 };
 
@@ -67,11 +69,27 @@ const deleteArticle = async (req, res) => {
 
 // **update article
 
-const updateArticle = async (req, res) => {
-  console.log("working");
-  res.redirect("/articles");
+const updateArticle = async (req, res, next) => {
+  req.article = await Article.findOne({ _id: req.params.id });
+  next();
 };
 
+const saveAndRedirect = (path) => {
+  return async (req, res) => {
+    let article = req.article;
+    article.title = req.body.title;
+    article.description = req.body.description;
+    article.markdown = req.body.markdown;
+
+    try {
+      article = await article.save();
+      res.redirect(`/articles/${article.slug}`);
+    } catch (error) {
+      console.log(error);
+      res.render(`${path}`, { article: article });
+    }
+  };
+};
 module.exports = {
   getAllArticles,
   newArticle,
@@ -79,4 +97,6 @@ module.exports = {
   getSingleArticle,
   updateArticle,
   deleteArticle,
+  editArticlePage,
+  saveAndRedirect,
 };

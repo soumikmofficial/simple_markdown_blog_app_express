@@ -35,8 +35,13 @@ const articleSchema = new mongoose.Schema({
 
 articleSchema.pre("validate", function (next) {
   if (this.title) {
-    let slug = slugify(this.title, { strict: true, lower: true });
-    this.slug = slug;
+    this.slug = slugify(
+      `${this.title} ${Math.floor(Math.random() * 1000000)}`,
+      {
+        strict: true,
+        lower: true,
+      }
+    );
   }
 
   if (this.markdown) {
