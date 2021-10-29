@@ -1,3 +1,4 @@
+const { findOneAndDelete } = require("../models/article");
 const Article = require("../models/article");
 
 // *get all articles
@@ -33,6 +34,7 @@ const newArticle = async (req, res) => {
     .render("new", { title: "Create Article", article: new Article() });
 };
 
+// **create article
 const createArticle = async (req, res) => {
   const { title, description, markdown } = req.body;
   let article = new Article({
@@ -42,11 +44,32 @@ const createArticle = async (req, res) => {
   });
   try {
     article = await article.save();
-    res.redirect(`/articles/${article._id}`);
+    res.redirect(`/articles/${article.slug}`);
   } catch (error) {
     console.log(error);
     res.render("new", { article: article });
   }
+};
+
+// *delete article
+const deleteArticle = async (req, res) => {
+  const { id } = req.params;
+  try {
+    const article = await Article.findOneAndDelete({ _id: id });
+    if (!article) {
+      return res.render("404");
+    }
+    res.redirect("/articles");
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+// **update article
+
+const updateArticle = async (req, res) => {
+  console.log("working");
+  res.redirect("/articles");
 };
 
 module.exports = {
@@ -54,4 +77,6 @@ module.exports = {
   newArticle,
   createArticle,
   getSingleArticle,
+  updateArticle,
+  deleteArticle,
 };

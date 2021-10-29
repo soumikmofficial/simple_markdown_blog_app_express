@@ -15,7 +15,12 @@
           >Read More</a
         >
         <a href="" class="btn edit-btn">Update</a>
-        <a href="" class="btn delete-btn">Delete</a>
+        <form
+          action="/articles/<%- article._id %>?_method=DELETE"
+          method="POST"
+        >
+          <button type="submit" class="btn delete-btn">Delete</button>
+        </form>
       </div>
       <% }) %>
     </div>

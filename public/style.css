@@ -96,6 +96,10 @@ a {
 .article-container .delete-btn {
   background: var(--red-color);
 }
+
+.article-container form {
+  display: inline-block;
+}
 .form-group {
   margin: 1.5rem 0;
 }

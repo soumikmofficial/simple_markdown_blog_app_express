@@ -2,10 +2,12 @@ require("dotenv").config();
 
 const express = require("express");
 const app = express();
+const methodOverride = require("method-override");
 
 const articleRouter = require("./routes/articles");
 const connectDB = require("./db/connect");
 
+app.use(methodOverride("_method"));
 app.set("view engine", "ejs");
 app.use(express.json());
 app.use(express.static("public"));
